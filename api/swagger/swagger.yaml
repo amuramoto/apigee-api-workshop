@@ -53,6 +53,29 @@ x-a127-services:
       flushInterval: 2000
       batchSize: 100
 paths:
+  /hello:
+    x-swagger-router-controller: hello_world
+    x-a127-apply: {}
+    get:
+      description: "Returns 'Hello' to the caller"
+      operationId: hello
+      security:
+        - oauth: []
+      produces:
+        - application/json
+      parameters:
+        - name: name
+          in: query
+          description: The name of the person to whom to say hello
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema: {}
+        default:
+          description: Error
+          schema: {}
   /restaurants:
     x-swagger-router-controller: restaurants
     x-a127-apply:
